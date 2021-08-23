@@ -56,7 +56,11 @@ Everything explained above is encapsulated in the OpenCV function, **cv2.HoughLi
     edges = cv2.Canny(gray,50,150,apertureSize = 3)
 
     lines = cv2.HoughLines(edges,1,np.pi/180,200)
-    for rho,theta in lines[0]:
+    
+    # for rho,theta in lines[0]: # no working , draw one line
+    
+    for line in lines:
+        rho, theta = line[0]
         a = np.cos(theta)
         b = np.sin(theta)
         x0 = a*rho
